@@ -1,46 +1,24 @@
-# Getting Started with Create React App
+# Ichitabi Timer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## これは何？
 
-## Available Scripts
+[志国一路さん](https://www.youtube.com/c/ShikuniIchiro)がYouTube上に投稿されている「志国一路のイチ旅！」の、次回公開日時までのカウントダウンを行うアプリです。
 
-In the project directory, you can run:
+## 設定情報
 
-### `npm start`
+- 公開日: 毎月第2木曜日、第4木曜日
+- 公開時刻: 18:00
+    - 参考
+      - [【イチ旅！高知観光編#１】高知のお城とがっかり名所！？【高知城・はりまや橋】](https://www.youtube.com/watch?v=0L1wjeyx6Ho): プレミア公開開始時刻18:30
+      - [【イチ旅！高知観光編#2】雨男と行く桂浜珍道中【桂浜】](https://www.youtube.com/watch?v=wMeWg6hPZaQ): プレミア公開開始時刻18:15
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 注意事項
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Ichitabi Timerは電気魚が個人的に作成したものです。本アプリに関して、志国一路さんに問い合わせ等を行わないでください。
+- アプリの公開に問題が生じたり、要請を受けた場合、直ちにアプリの公開を中止します。
 
-### `npm test`
+## 作成にあたり参考にした資料
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [[GAS][Javascript]指定の年月の「第n d曜日」を配列で取得する - Crieit](https://crieit.net/posts/GAS-Javascript-n-d)
+- [【JavaScript】Date型の値渡し | つちけんブログ](https://tsuchikenblog.com/javascript-tips1/)
+- [2つの日時の差分を計算する | GRAYCODE JavaScript](https://gray-code.com/javascript/calculate-the-difference-between-two-dates-and-times/)
