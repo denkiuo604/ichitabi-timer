@@ -1,31 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ImYoutube2 } from 'react-icons/im'
 import './App.css';
 
 function App() {
   // 現在日時の取得
-  const today = new Date();
+  const [today, setToday] = useState(new Date());
 
   // 公開日時設定用変数
+  const pubDay = 4;
   const pubHour = 18;
   const pubMinute = 0;
-  var pubMonth = today.getMonth();
-  var pubWeek: number;
-  if (getDateWithPubTime(getNthDay(today, 4, 4)) < today) {
-    // 次月の第2木曜日
-    pubMonth = today.getMonth() + 1;
-    pubWeek = 2;
-  } else if (getDateWithPubTime(getNthDay(today, 2, 4)) < today) {
-    // 当月の第4木曜日
-    pubWeek = 4;
-  } else {
-    // 当月の第2木曜日
-    pubWeek = 2;
-  }
+  const [pubMonth, pubWeek] = getPubMonthAndWeek(today);
   const tmpToday = new Date(today.getTime());
   tmpToday.setMonth(pubMonth);
-  const pubDate = getNthDay(tmpToday, pubWeek, 4);
-  const pubTime = getDateWithPubTime(pubDate);
+  const pubDate = getNthDay(tmpToday, pubWeek, pubDay);
+  const [pubTime, setPubTime] = useState(getDateWithPubTime(pubDate));
 
   // カウントダウン用変数
   const dayMilliSec = 60 * 60 * 24 * 1000; // 1日=(60 * 60 * 24 * 1000)ミリ秒
@@ -40,6 +29,13 @@ function App() {
   // カウントダウンの実行
   function countdown() {
     const today = new Date();
+    setToday(today);
+    const [pubMonth, pubWeek] = getPubMonthAndWeek(today);
+    const tmpToday = new Date(today.getTime());
+    tmpToday.setMonth(pubMonth);
+    const pubDate = getNthDay(tmpToday, pubWeek, pubDay);
+    setPubTime(getDateWithPubTime(pubDate));
+
     if (pubTime.getTime() - today.getTime() >= 0) {
       const timeDiff = getTimeDiff(today, pubTime);
       setDay(timeDiff.day);
@@ -48,7 +44,10 @@ function App() {
       setSecond(timeDiff.second);
     }
   }
-  setInterval(countdown, 1000);
+  useEffect(() => {
+    const intervalId = setInterval(countdown, 1000);
+    return () => clearInterval(intervalId);
+  });
 
   // 曜日
   const days = ['日', '月', '火', '水', '木', '金', '土'];
@@ -102,6 +101,26 @@ function App() {
     result.setMinutes(pubMinute);
     result.setSeconds(0);
     return result;
+  }
+
+  /**
+   * 次回公開日の月と週を取得する関数
+   * 
+   * @param date 日付
+   * @returns 月と週
+   */
+  function getPubMonthAndWeek(date: Date): [number, number] {
+    // 初期値: 当月の第2木曜日
+    var month = date.getMonth();
+    var week = 2;
+    if (getDateWithPubTime(getNthDay(date, 4, pubDay)) < date) {
+      // 次月の第2木曜日
+      month += 1;
+    } else if (getDateWithPubTime(getNthDay(date, 2, pubDay)) < date) {
+      // 当月の第4木曜日
+      week = 4;
+    }
+    return [month, week];
   }
 
   /**
