@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ichitabi-timer/static/css/main.073c9b0a.css",
-    "main.js": "/ichitabi-timer/static/js/main.78c0bb83.js",
+    "main.css": "/ichitabi-timer/static/css/main.952e07c6.css",
+    "main.js": "/ichitabi-timer/static/js/main.31d6f162.js",
     "static/js/787.5b4b246e.chunk.js": "/ichitabi-timer/static/js/787.5b4b246e.chunk.js",
     "index.html": "/ichitabi-timer/index.html",
-    "main.073c9b0a.css.map": "/ichitabi-timer/static/css/main.073c9b0a.css.map",
-    "main.78c0bb83.js.map": "/ichitabi-timer/static/js/main.78c0bb83.js.map",
+    "main.952e07c6.css.map": "/ichitabi-timer/static/css/main.952e07c6.css.map",
+    "main.31d6f162.js.map": "/ichitabi-timer/static/js/main.31d6f162.js.map",
     "787.5b4b246e.chunk.js.map": "/ichitabi-timer/static/js/787.5b4b246e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.78c0bb83.js"
+    "static/css/main.952e07c6.css",
+    "static/js/main.31d6f162.js"
   ]
 }
