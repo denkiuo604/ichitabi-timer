@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ImYoutube2 } from 'react-icons/im'
+import { ImGithub, ImYoutube2 } from 'react-icons/im'
 import './App.css';
 
 function App() {
@@ -146,7 +146,18 @@ function App() {
         <p>「志国一路のイチ旅！」</p>
         <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}木曜日{pubHour.toString().padStart(2, '0')}:{pubMinute.toString().padStart(2, '0')}）まで</p>
         <p>あと{day}日{hour}時間{minute}分{second}秒</p>
-        <a href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル"><ImYoutube2 size={100} color="white" /></a>
+        <div className="description">
+          <div>志国一路さんのYouTubeチャンネル</div>
+          <a href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル">
+            <ImYoutube2 size="12vmin" color="white" />
+          </a>
+        </div>
+        <div className="description">
+          <div>このアプリについて</div>
+          <a href="https://github.com/denkiuo604/ichitabi-timer" target="_blank" rel="noreferrer" title="GitHub repository of ichitabi-timer">
+            <ImGithub size="5vmin" color="white" />
+          </a>
+        </div>
       </header>
     </div>
   );
