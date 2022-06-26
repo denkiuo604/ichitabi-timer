@@ -8,7 +8,7 @@ function App() {
 
   // 公開日時設定用変数
   const pubDay = 4;
-  const pubHour = 18;
+  const pubHour = 18 - today.getTimezoneOffset() / 60 - 9; // UTC+9
   const pubMinute = 0;
   const [pubMonth, pubWeek] = getPubMonthAndWeek(today);
   const tmpToday = new Date(today.getTime());
@@ -95,7 +95,7 @@ function App() {
    * @param date - 日付
    * @returns 時分が公開時刻に変換された日時
    */
-   function getDateWithPubTime(date: Date) {
+  function getDateWithPubTime(date: Date) {
     const result = new Date(date.getTime());
     result.setHours(pubHour);
     result.setMinutes(pubMinute);
