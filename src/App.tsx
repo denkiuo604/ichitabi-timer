@@ -144,8 +144,14 @@ function App() {
       <header className="App-header">
         <p>今日は{today.getMonth() + 1}月{today.getDate()}日({days[today.getDay()]})</p>
         <p>「志国一路のイチ旅！」</p>
-        <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}木曜日{pubHour.toString().padStart(2, '0')}:{pubMinute.toString().padStart(2, '0')}）まで</p>
-        <p>あと{day}日{hour}時間{minute}分{second}秒</p>
+        {/* イチ旅！ 2022年8月お休み対応 */}
+        <div hidden={pubTime.getMonth() + 1 !== 8}>
+          <p>8月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
+        </div>
+        <div hidden={pubTime.getMonth() + 1 === 8}>
+          <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}木曜日{pubHour.toString().padStart(2, '0')}:{pubMinute.toString().padStart(2, '0')}）まで</p>
+          <p>あと{day}日{hour}時間{minute}分{second}秒</p>
+        </div>
         <div className="description">
           <div>志国一路さんのYouTubeチャンネル</div>
           <a href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル">
