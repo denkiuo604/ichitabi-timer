@@ -7,9 +7,9 @@ function App() {
   const [today, setToday] = useState(new Date());
 
   // 公開日時設定用変数
-  const pubDay = 4;
+  const pubDay = 6;
   const pubHour = 18 - today.getTimezoneOffset() / 60 - 9; // UTC+9
-  const pubMinute = 0;
+  const pubMinute = 30;
   const [pubMonth, pubWeek] = getPubMonthAndWeek(today);
   const tmpToday = new Date(today.getTime());
   tmpToday.setMonth(pubMonth);
@@ -113,12 +113,13 @@ function App() {
     // 初期値: 当月の第2木曜日
     var month = date.getMonth();
     var week = 2;
-    if (getDateWithPubTime(getNthDay(date, 4, pubDay)) < date) {
+    var anotherWeek = 5;
+    if (getDateWithPubTime(getNthDay(date, anotherWeek, pubDay)) < date) {
       // 次月の第2木曜日
       month += 1;
     } else if (getDateWithPubTime(getNthDay(date, 2, pubDay)) < date) {
       // 当月の第4木曜日
-      week = 4;
+      week = anotherWeek;
     }
     return [month, week];
   }
@@ -159,7 +160,7 @@ function App() {
           <p>8月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
         </div>
         <div hidden={pubTime.getMonth() + 1 === 8}>
-          <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}木曜日{zeroPadding(pubHour, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
+          <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHour, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
           <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
         </div>
         <div className="description">
