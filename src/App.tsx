@@ -32,7 +32,7 @@ function App() {
     setToday(today);
     const [pubMonth, pubWeek] = getPubMonthAndWeek(today);
     const tmpToday = new Date(today.getTime());
-    tmpToday.setMonth(pubMonth);
+    tmpToday.setMonth(pubMonth, 1);
     const pubDate = getNthDay(tmpToday, pubWeek, pubDay);
     setPubTime(getDateWithPubTime(pubDate));
 
