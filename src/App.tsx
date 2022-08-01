@@ -7,9 +7,9 @@ function App() {
   const [today, setToday] = useState(new Date());
 
   // 公開日時設定用変数
-  const pubDay = 6;
+  const pubDay = 4;
   const pubHour = 18 - today.getTimezoneOffset() / 60 - 9; // UTC+9
-  const pubMinute = 30;
+  const pubMinute = 0;
   const [pubMonth, pubWeek] = getPubMonthAndWeek(today);
   const tmpToday = new Date(today.getTime());
   tmpToday.setMonth(pubMonth);
@@ -113,7 +113,7 @@ function App() {
     // 初期値: 当月の第2木曜日
     var month = date.getMonth();
     var week = 2;
-    var anotherWeek = 5;
+    var anotherWeek = 4;
     if (getDateWithPubTime(getNthDay(date, anotherWeek, pubDay)) < date) {
       // 次月の第2木曜日
       month += 1;
