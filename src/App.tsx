@@ -155,11 +155,7 @@ function App() {
       <header className="App-header">
         <p>今日は{today.getMonth() + 1}月{today.getDate()}日({days[today.getDay()]})</p>
         <p>「志国一路のイチ旅！」</p>
-        {/* イチ旅！ 2022年8月お休み対応 */}
-        <div hidden={pubTime.getMonth() + 1 !== 8}>
-          <p>8月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
-        </div>
-        <div hidden={pubTime.getMonth() + 1 === 8}>
+        <div>
           <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHour, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
           <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
         </div>
