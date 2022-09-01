@@ -167,7 +167,7 @@ function App() {
         </div>
         <div className="description">
           <div>このアプリについて</div>
-          <a href="https://github.com/denkiuo604/ichitabi-timer" target="_blank" rel="noreferrer" title="GitHub repository of ichitabi-timer">
+          <a href="https://github.com/denkiuo604/ichitabi-timer/blob/main/README.md" target="_blank" rel="noreferrer" title="GitHub repository of ichitabi-timer">
             <ImGithub size="5vmin" color="white" />
           </a>
         </div>
