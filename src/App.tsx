@@ -7,7 +7,7 @@ function App() {
   const [today, setToday] = useState(new Date());
 
   // 公開日時設定用変数
-  const pubDay = 5;
+  const pubDay = 4;
   const pubHour = 18 - today.getTimezoneOffset() / 60 - 9; // UTC+9
   const pubMinute = 0;
   const [pubMonth, pubWeek] = getPubMonthAndWeek(today);
@@ -153,23 +153,30 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>今日は{today.getMonth() + 1}月{today.getDate()}日({days[today.getDay()]})</p>
-        <p>「志国一路のイチ旅！」</p>
+        <div>
+          <p>今日は{today.getMonth() + 1}月{today.getDate()}日({days[today.getDay()]})</p>
+          <p>「志国一路のイチ旅！」</p>
+        </div>
+        <div className="youtube">
+          <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL7cOHyUohYjaVo7_3JdkOaPB57Y_GuTOJ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        </div>
         <div>
           <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHour, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
           <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
         </div>
-        <div className="description">
-          <div>志国一路さんのYouTubeチャンネル</div>
-          <a href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル">
-            <ImYoutube2 size="12vmin" color="white" />
-          </a>
-        </div>
-        <div className="description">
-          <div>このアプリについて</div>
-          <a href="https://github.com/denkiuo604/ichitabi-timer/blob/main/README.md" target="_blank" rel="noreferrer" title="GitHub repository of ichitabi-timer">
-            <ImGithub size="5vmin" color="white" />
-          </a>
+        <div>
+          <div className="description">
+            <div>志国一路さんのYouTubeチャンネル</div>
+            <a href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル">
+              <ImYoutube2 size="12vmin" color="white" />
+            </a>
+          </div>
+          <div className="description">
+            <div>このアプリについて</div>
+            <a href="https://github.com/denkiuo604/ichitabi-timer/blob/main/README.md" target="_blank" rel="noreferrer" title="Readme of ichitabi-timer">
+              <ImGithub size="5vmin" color="white" />
+            </a>
+          </div>
         </div>
       </header>
     </div>
