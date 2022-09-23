@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ImGithub, ImYoutube2 } from 'react-icons/im'
+import { ImGithub, ImTwitter, ImYoutube2 } from 'react-icons/im'
 import './App.css';
 
 function App() {
@@ -166,15 +166,18 @@ function App() {
         </div>
         <div>
           <div className="description">
-            <div>志国一路さんのYouTubeチャンネル</div>
+            <p>志国一路さんのYouTubeチャンネル</p>
             <a href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル">
               <ImYoutube2 size="12vmin" color="white" />
             </a>
           </div>
-          <div className="description">
-            <div>このアプリについて</div>
-            <a href="https://github.com/denkiuo604/ichitabi-timer/blob/main/README.md" target="_blank" rel="noreferrer" title="Readme of ichitabi-timer">
+          <p className="about">Ichitabi Timer</p>
+          <div className="about">
+            <a href="https://github.com/denkiuo604/ichitabi-timer" target="_blank" rel="noreferrer" title="GitHub repository of Ichitabi Timer">
               <ImGithub size="5vmin" color="white" />
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=Ichitabi%20Timer&url=https%3A%2F%2Fdenkiuo604.github.io%2Fichitabi-timer" target="_blank" rel="noreferrer" title="Tweet about Ichitabi Timer">
+              <ImTwitter size="5vmin" color="white" />
             </a>
           </div>
         </div>

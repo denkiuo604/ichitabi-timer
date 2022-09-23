@@ -21,6 +21,14 @@
   gap: 2vmin;
 }
 
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(3px + 2vmin);
+  gap: 5vmin;
+}
+
 /* YouTube埋め込み用 */
 div.youtube {
   position: relative;
