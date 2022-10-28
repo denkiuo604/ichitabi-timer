@@ -7,7 +7,7 @@ function App() {
   const [today, setToday] = useState(new Date());
 
   // 公開日時設定用変数
-  const pubDay = 5;
+  const pubDay = 4;
   const pubHour = 18 - today.getTimezoneOffset() / 60 - 9; // UTC+9
   const pubMinute = 0;
   const [pubMonth, pubWeek] = getPubMonthAndWeek(today);
