@@ -14,10 +14,10 @@ A clear and concise description of what the bug is.
 **再現方法 (To Reproduce)**
 不具合・バグが発生する条件やタイミング等を記入してください。
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+1. '...' へ進む (Go to '...')
+2. '...' をクリックする (Click on '....')
+3. '...' までスクロールする (Scroll down to '....')
+4. エラーが発生する (See error)
 
 **期待される動作 (Expected behavior)**
 不具合・バグが解消された場合に期待される動作を記入してください。
