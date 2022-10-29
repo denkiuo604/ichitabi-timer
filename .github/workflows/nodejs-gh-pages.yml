@@ -1,5 +1,5 @@
 # Workflow for building and deploying a Node.js site to GitHub Pages
-name: Node.js CI
+name: GitHub Pages with Node.js CI/CD
 
 on:
   # Runs on pushes targeting the default branch
