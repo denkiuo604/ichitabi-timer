@@ -150,18 +150,6 @@ function App() {
     return num.toString().padStart(maxLength, '0');
   }
 
-  // Twitter埋め込み用
-  useEffect(()=>{
-    // scriptを読み込み
-    const script = document.createElement('script');
-    script.src = "https://platform.twitter.com/widgets.js";
-    document.body.appendChild(script);
-    // アンマウント時に一応scriptタグを消しておく
-    return () => {
-      document.body.removeChild(script);
-    }
- }, [])
-
   return (
     <div className="App">
       <header className="App-header">
@@ -177,8 +165,7 @@ function App() {
           <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
         </div>
         <div>
-          <p>電気魚は、志国一路さんの活動を応援しています。</p>
-          <blockquote className="twitter-tweet tw-align-center" data-theme="light"><p lang="ja" dir="ltr">まだまだ編集中〜<br/><br/>この調子だと20時とか21時とかになるかも…！<br/><br/>もうちょい頑張るます！</p>&mdash; 志国一路@第2･第4木曜イチ旅配信中！ (@shikuni_ichiro) <a href="https://twitter.com/shikuni_ichiro/status/1592084584363356160?ref_src=twsrc%5Etfw">November 14, 2022</a></blockquote>
+          <p>次回作公開まで、あと少し。</p>
         </div>
         <div>
           <div className="description">
