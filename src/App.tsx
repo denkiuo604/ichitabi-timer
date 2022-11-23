@@ -59,7 +59,7 @@ const App = () => {
    * @param day - 取得したい曜日を表す数値(0:日曜日〜6:土曜日)
    * @return ある年月のday曜日の日付の入った配列
    */
-  const getDays = (date: Date, day: number) => {
+  function getDays (date: Date, day: number) {
     const year = date.getFullYear()
     const month = date.getMonth()
 
