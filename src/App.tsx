@@ -164,7 +164,9 @@ const App = () => {
           <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHour, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
           <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
         </div>
-        <div><p>次回作公開まで、あと少し。</p></div>
+        <div>
+          <p>12月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
+        </div>
         <div>
           <div className="description">
             <p>志国一路さんのYouTubeチャンネル</p>
