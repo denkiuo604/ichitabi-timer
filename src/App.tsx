@@ -16,6 +16,9 @@ const App = () => {
   const pubDate = getNthDay(tmpToday, pubWeek, pubDay)
   const [pubTime, setPubTime] = useState(getDateWithPubTime(pubDate))
 
+  // お休み月の設定
+  const offMonth = 12
+
   // カウントダウン用変数
   const dayMilliSec = 60 * 60 * 24 * 1000 // 1日=(60 * 60 * 24 * 1000)ミリ秒
   const hourMilliSec = 60 * 60 * 1000 // 1時間=(60 * 60 * 1000)ミリ秒
@@ -160,12 +163,12 @@ const App = () => {
         <div className="youtube">
           <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL7cOHyUohYjaVo7_3JdkOaPB57Y_GuTOJ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
-        <div hidden={today.getMonth() + 1 === 12}>
+        <div hidden={today.getMonth() + 1 === offMonth}>
           <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHour, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
           <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
         </div>
-        <div hidden={today.getMonth() + 1 !== 12}>
-          <p>12月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
+        <div hidden={today.getMonth() + 1 !== offMonth}>
+          <p>{offMonth}月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
         </div>
         <div>
           <div className="description">
