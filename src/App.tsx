@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ImGithub, ImTwitter, ImYoutube2 } from 'react-icons/im'
 import './App.css'
+import { pubWeeks, pubDays, offMonth, tempSchedule } from './config'
 
 const App = () => {
   // 現在日時の取得
@@ -15,12 +16,6 @@ const App = () => {
   tmpToday.setMonth(pubMonth)
   const pubDate = getNthDay(tmpToday, pubWeek, pubDay)
   const [pubTime, setPubTime] = useState(getDateWithPubTime(pubDate))
-
-  // お休み月の設定
-  const offMonth = 12
-
-  // 臨時のスケジュール変更有無
-  const tempSchedule = true
 
   // カウントダウン用変数
   const dayMilliSec = 60 * 60 * 24 * 1000 // 1日=(60 * 60 * 24 * 1000)ミリ秒
@@ -116,18 +111,32 @@ const App = () => {
    * @returns 月と週
    */
   function getPubMonthAndWeek (date: Date): [number, number] {
-    // 初期値: 当月の第2木曜日
-    let month = date.getMonth()
-    let week = 2
-    const anotherWeek = 4
-    if (getDateWithPubTime(getNthDay(date, anotherWeek, pubDay)) < date) {
-      // 次月の第2木曜日
-      month += 1
-    } else if (getDateWithPubTime(getNthDay(date, 2, pubDay)) < date) {
-      // 当月の第4木曜日
-      week = anotherWeek
+    // 当月の公開日をすべて取得する
+    // returnで必要なため、第何週かの情報も一緒に入れておく
+    const pubDates: Array<[Date, number]> = []
+    pubWeeks.forEach(week => {
+      pubDays.forEach(day => {
+        pubDates.push([getNthDay(date, week, day), week])
+      })
+    })
+
+    // 当月の公開日のうち、当日以降のものを取得する
+    const pubDatesAfterToday = pubDates.filter(pubDate => date < pubDate[0])
+
+    // 当月の公開日のうち当日以降のものがなければ、来月の公開日を取得する
+    if (pubDatesAfterToday.length === 0) {
+      const dateNextMonth = new Date(date.getTime())
+      dateNextMonth.setMonth(dateNextMonth.getMonth() + 1)
+      pubWeeks.forEach(week => {
+        pubDays.forEach(day => {
+          pubDatesAfterToday.push([getNthDay(dateNextMonth, week, day), week])
+        })
+      })
     }
-    return [month, week]
+
+    // 公開日のうち、最も直近のものを取得する
+    const pubDate = pubDatesAfterToday.sort((a, b) => a[0].getTime() - b[0].getTime())[0]
+    return [pubDate[0].getMonth(), pubDate[1]]
   }
 
   /**
