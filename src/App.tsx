@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
 import { ImGithub, ImTwitter, ImYoutube2 } from 'react-icons/im'
 import './App.css'
-import { pubWeeks, pubDays, offMonth, tempSchedule } from './config'
+import { pubWeeks, pubDays, pubHour, pubMinute, offMonth, tempSchedule } from './config'
 
 const App = () => {
   // 現在日時の取得
   const [today, setToday] = useState(new Date())
 
   // 公開日時設定用変数
-  const pubDay = 4
-  const pubHour = 18 - today.getTimezoneOffset() / 60 - 9 // UTC+9
-  const pubMinute = 0
-  const [pubMonth, pubWeek] = getPubMonthAndWeek(today)
+  const pubHourOffset = pubHour - today.getTimezoneOffset() / 60 - 9 // UTC+9
+  const [pubMonth, initPubWeek, initPubDay] = getPubMonthWeekDay(today)
+  const [pubWeek, setPubWeek] = useState(initPubWeek)
+  const [pubDay, setPubDay] = useState(initPubDay)
   const tmpToday = new Date(today.getTime())
   tmpToday.setMonth(pubMonth)
   const pubDate = getNthDay(tmpToday, pubWeek, pubDay)
@@ -31,7 +31,9 @@ const App = () => {
   const countdown = () => {
     const today = new Date()
     setToday(today)
-    const [pubMonth, pubWeek] = getPubMonthAndWeek(today)
+    const [pubMonth, pubWeek, pubDay] = getPubMonthWeekDay(today)
+    setPubWeek(pubWeek)
+    setPubDay(pubDay)
     const tmpToday = new Date(today.getTime())
     tmpToday.setMonth(pubMonth, 1)
     const pubDate = getNthDay(tmpToday, pubWeek, pubDay)
@@ -98,25 +100,26 @@ const App = () => {
    */
   function getDateWithPubTime (date: Date) {
     const result = new Date(date.getTime())
-    result.setHours(pubHour)
+    result.setHours(pubHourOffset)
     result.setMinutes(pubMinute)
     result.setSeconds(0)
     return result
   }
 
   /**
-   * 次回公開日の月と週を取得する関数
+   * 次回公開日の月と週と曜日を取得する関数
    *
    * @param date 日付
-   * @returns 月と週
+   * @returns 月, 週, 曜日
    */
-  function getPubMonthAndWeek (date: Date): [number, number] {
+  function getPubMonthWeekDay (date: Date): [number, number, number] {
     // 当月の公開日をすべて取得する
     // returnで必要なため、第何週かの情報も一緒に入れておく
     const pubDates: Array<[Date, number]> = []
     pubWeeks.forEach(week => {
       pubDays.forEach(day => {
-        pubDates.push([getNthDay(date, week, day), week])
+        const nthDay = getNthDay(date, week, day)
+        pubDates.push([getDateWithPubTime(nthDay), week])
       })
     })
 
@@ -129,14 +132,15 @@ const App = () => {
       dateNextMonth.setMonth(dateNextMonth.getMonth() + 1)
       pubWeeks.forEach(week => {
         pubDays.forEach(day => {
-          pubDatesAfterToday.push([getNthDay(dateNextMonth, week, day), week])
+          const nthDay = getNthDay(dateNextMonth, week, day)
+          pubDatesAfterToday.push([getDateWithPubTime(nthDay), week])
         })
       })
     }
 
     // 公開日のうち、最も直近のものを取得する
     const pubDate = pubDatesAfterToday.sort((a, b) => a[0].getTime() - b[0].getTime())[0]
-    return [pubDate[0].getMonth(), pubDate[1]]
+    return [pubDate[0].getMonth(), pubDate[1], pubDate[0].getDay()]
   }
 
   /**
@@ -176,7 +180,7 @@ const App = () => {
           <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL7cOHyUohYjaVo7_3JdkOaPB57Y_GuTOJ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
         <div hidden={today.getMonth() + 1 === offMonth || tempSchedule}>
-          <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHour, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
+          <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHourOffset, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
           <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
         </div>
         <div hidden={today.getMonth() + 1 !== offMonth || tempSchedule}>
