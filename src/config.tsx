@@ -2,6 +2,9 @@
  * 設定ファイル
  */
 
+// 曜日表記
+export const days = ['日', '月', '火', '水', '木', '金', '土']
+
 // 公開週・曜日の設定
 export const pubWeeks = [2, 3]
 export const pubDays = [4]

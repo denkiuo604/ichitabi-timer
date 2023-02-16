@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react'
 import { ImGithub, ImTwitter, ImYoutube2 } from 'react-icons/im'
 import './App.css'
-import { pubWeeks, pubDays, pubHour, pubMinute, offMonth, tempSchedule } from './config'
+import {
+  days,
+  pubWeeks,
+  pubDays,
+  pubHour,
+  pubMinute,
+  offMonth,
+  tempSchedule
+} from './config'
 
 const App = () => {
   // 現在日時の取得
@@ -51,9 +59,6 @@ const App = () => {
     const intervalId = setInterval(countdown, 1000)
     return () => clearInterval(intervalId)
   })
-
-  // 曜日
-  const days = ['日', '月', '火', '水', '木', '金', '土']
 
   /**
    * その年月のd曜日を取得する関数
