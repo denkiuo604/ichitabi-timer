@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: "/ichitabi-timer/",
-  assetsInclude: ["robots.txt"],
+  assetsInclude: ["robots.txt", "manifest.json"],
 })
