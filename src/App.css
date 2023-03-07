@@ -1,23 +1,15 @@
-.App {
+#root {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(5px + 2vmin);
 }
 
 .description {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: calc(5px + 2vmin);
   gap: 2vmin;
 }
 
@@ -30,22 +22,18 @@
 }
 
 /* YouTube埋め込み用 */
-div.youtube {
+.youtube {
   position: relative;
-  width: 90%; /* 左右に余白を設ける */
-  max-width: 560px;
-}
-
-div.youtube::before {
-  content:'';
-  display: block;
-  padding-top: 56.25%;
-}
-
-div.youtube iframe {
-  position: absolute;
   width: 100%;
-  height: 100%;
+  height: 0;            /* 高さはpadding-topで指定 */
+  padding-top: 56.25%;  /* 高さを指定(16:9) */
+}
+
+/* YouTube埋め込み用のiframe */
+.youtube iframe{
+  position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
 }

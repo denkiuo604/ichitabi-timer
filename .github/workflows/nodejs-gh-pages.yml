@@ -30,11 +30,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
       - run: npm ci
+      - run: npm run lint
       - run: npm run build --if-present
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: build/
+          path: dist/
   
   # Deployment job
   deploy:

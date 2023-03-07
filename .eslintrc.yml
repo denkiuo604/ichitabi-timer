@@ -18,4 +18,7 @@ rules:
   'react/react-in-jsx-scope': off
   '@typescript-eslint/explicit-function-return-type': off
 ignorePatterns:
-  - src/reportWebVitals.ts
+  - src/vite-env.d.ts
+settings:
+  react:
+    version: "detect"

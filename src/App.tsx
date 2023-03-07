@@ -57,9 +57,7 @@ const App = () => {
   }
   useEffect(() => {
     const intervalId = setInterval(countdown, 1000)
-    return () => {
-      clearInterval(intervalId)
-    }
+    return () => clearInterval(intervalId)
   })
 
   /**
@@ -178,42 +176,42 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div>
-          <p>今日は{today.getMonth() + 1}月{today.getDate()}日({days[today.getDay()]})</p>
-          <p>「志国一路のイチ旅！」</p>
-        </div>
+      <div>
+        <p>今日は{today.getMonth() + 1}月{today.getDate()}日({days[today.getDay()]})</p>
+        <p>「志国一路のイチ旅！」</p>
+      </div>
+      <div className="youtube-wrap">
         <div className="youtube">
           <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL7cOHyUohYjaVo7_3JdkOaPB57Y_GuTOJ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
-        <div hidden={today.getMonth() + 1 === offMonth || tempSchedule}>
-          <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHourOffset, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
-          <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
+      </div>
+      <div hidden={today.getMonth() + 1 === offMonth || tempSchedule}>
+        <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHourOffset, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
+        <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
+      </div>
+      <div hidden={today.getMonth() + 1 !== offMonth || tempSchedule}>
+        <p>{offMonth}月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
+      </div>
+      <div hidden={!tempSchedule}>
+        <p>次回作公開まで、あと少し。</p>
+      </div>
+      <div>
+        <div className="description">
+          <p>志国一路さんのYouTubeチャンネル</p>
+          <a href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル">
+            <ImYoutube2 size="12vmin" />
+          </a>
         </div>
-        <div hidden={today.getMonth() + 1 !== offMonth || tempSchedule}>
-          <p>{offMonth}月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
+        <p className="about">Ichitabi Timer</p>
+        <div className="about">
+          <a href="https://github.com/denkiuo604/ichitabi-timer" target="_blank" rel="noreferrer" title="GitHub repository of Ichitabi Timer">
+            <ImGithub size="5vmin" />
+          </a>
+          <a href="https://twitter.com/intent/tweet?text=Ichitabi%20Timer&url=https%3A%2F%2Fdenkiuo604.github.io%2Fichitabi-timer" target="_blank" rel="noreferrer" title="Tweet about Ichitabi Timer">
+            <ImTwitter size="5vmin" />
+          </a>
         </div>
-        <div hidden={!tempSchedule}>
-          <p>次回作公開まで、あと少し。</p>
-        </div>
-        <div>
-          <div className="description">
-            <p>志国一路さんのYouTubeチャンネル</p>
-            <a href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル">
-              <ImYoutube2 size="12vmin" color="white" />
-            </a>
-          </div>
-          <p className="about">Ichitabi Timer</p>
-          <div className="about">
-            <a href="https://github.com/denkiuo604/ichitabi-timer" target="_blank" rel="noreferrer" title="GitHub repository of Ichitabi Timer">
-              <ImGithub size="5vmin" color="white" />
-            </a>
-            <a href="https://twitter.com/intent/tweet?text=Ichitabi%20Timer&url=https%3A%2F%2Fdenkiuo604.github.io%2Fichitabi-timer" target="_blank" rel="noreferrer" title="Tweet about Ichitabi Timer">
-              <ImTwitter size="5vmin" color="white" />
-            </a>
-          </div>
-        </div>
-      </header>
+      </div>
     </div>
   )
 }
