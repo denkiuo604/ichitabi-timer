@@ -57,7 +57,9 @@ const App = () => {
   }
   useEffect(() => {
     const intervalId = setInterval(countdown, 1000)
-    return () => clearInterval(intervalId)
+    return () => {
+      clearInterval(intervalId)
+    }
   })
 
   /**
