@@ -17,4 +17,4 @@ export const pubMinute = 0
 export const offMonth = 0
 
 // 臨時のスケジュール変更有無
-export const tempSchedule = false
+export const tempSchedule = true
