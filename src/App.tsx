@@ -7,7 +7,7 @@ import {
   pubDays,
   pubHour,
   pubMinute,
-  offMonth,
+  offMonths,
   tempSchedule
 } from './config'
 
@@ -187,12 +187,12 @@ const App = () => {
           <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL7cOHyUohYjaVo7_3JdkOaPB57Y_GuTOJ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
       </div>
-      <div hidden={today.getMonth() + 1 === offMonth || tempSchedule}>
+      <div hidden={offMonths.includes(pubTime.getMonth() + 1) || tempSchedule}>
         <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHourOffset, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
         <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
       </div>
-      <div hidden={today.getMonth() + 1 !== offMonth || tempSchedule}>
-        <p>{offMonth}月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
+      <div hidden={!offMonths.includes(pubTime.getMonth() + 1) || tempSchedule}>
+        <p>{pubTime.getMonth() + 1}月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
       </div>
       <div hidden={!tempSchedule}>
         <p>次回作公開まで、あと少し。</p>
