@@ -20,9 +20,9 @@ const App = () => {
   const [pubMonth, initPubWeek, initPubDay] = getPubMonthWeekDay(today)
   const [pubWeek, setPubWeek] = useState(initPubWeek)
   const [pubDay, setPubDay] = useState(initPubDay)
-  const tmpToday = new Date(today.getTime())
-  tmpToday.setMonth(pubMonth)
-  const pubDate = getNthDay(tmpToday, pubWeek, pubDay)
+  const pubMonth1st = new Date()
+  pubMonth1st.setMonth(pubMonth - 1, 1)
+  const pubDate = getNthDay(pubMonth1st, pubWeek, pubDay)
   const [pubTime, setPubTime] = useState(getDateWithPubTime(pubDate))
 
   // カウントダウン用変数
@@ -42,9 +42,9 @@ const App = () => {
     const [pubMonth, pubWeek, pubDay] = getPubMonthWeekDay(today)
     setPubWeek(pubWeek)
     setPubDay(pubDay)
-    const tmpToday = new Date(today.getTime())
-    tmpToday.setMonth(pubMonth, 1)
-    const pubDate = getNthDay(tmpToday, pubWeek, pubDay)
+    const pubMonth1st = new Date()
+    pubMonth1st.setMonth(pubMonth - 1, 1)
+    const pubDate = getNthDay(pubMonth1st, pubWeek, pubDay)
     setPubTime(getDateWithPubTime(pubDate))
 
     if (pubTime.getTime() - today.getTime() >= 0) {
