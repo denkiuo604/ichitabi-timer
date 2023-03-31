@@ -21,7 +21,7 @@ const App = () => {
   const [pubWeek, setPubWeek] = useState(initPubWeek)
   const [pubDay, setPubDay] = useState(initPubDay)
   const pubMonth1st = new Date()
-  pubMonth1st.setMonth(pubMonth - 1, 1)
+  pubMonth1st.setMonth(pubMonth, 1)
   const pubDate = getNthDay(pubMonth1st, pubWeek, pubDay)
   const [pubTime, setPubTime] = useState(getDateWithPubTime(pubDate))
 
@@ -43,7 +43,7 @@ const App = () => {
     setPubWeek(pubWeek)
     setPubDay(pubDay)
     const pubMonth1st = new Date()
-    pubMonth1st.setMonth(pubMonth - 1, 1)
+    pubMonth1st.setMonth(pubMonth, 1)
     const pubDate = getNthDay(pubMonth1st, pubWeek, pubDay)
     setPubTime(getDateWithPubTime(pubDate))
 
