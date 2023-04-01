@@ -114,7 +114,7 @@ const App = () => {
   }
 
   /**
-   * 次回公開日の月と週と曜日を取得する関数
+   * 入力された日付を基に、次回公開日の月と週と曜日を取得する関数
    *
    * @param date 日付
    * @returns 月, 週, 曜日
@@ -130,23 +130,23 @@ const App = () => {
       })
     })
 
-    // 当月の公開日のうち、当日以降のものを取得する
-    const pubDatesAfterToday = pubDates.filter(pubDate => date < pubDate[0])
+    // 当月の公開日のうち、入力日付以降のものを取得する
+    const pubDatesAfterDate = pubDates.filter(pubDate => date < pubDate[0])
 
-    // 当月の公開日のうち当日以降のものがなければ、来月の公開日を取得する
-    if (pubDatesAfterToday.length === 0) {
+    // 当月の公開日のうち入力日付以降のものがなければ、来月の公開日を取得する
+    if (pubDatesAfterDate.length === 0) {
       const dateNextMonth = new Date(date.getTime())
-      dateNextMonth.setMonth(dateNextMonth.getMonth() + 1)
+      dateNextMonth.setMonth(dateNextMonth.getMonth() + 1, 1)
       pubWeeks.forEach(week => {
         pubDays.forEach(day => {
           const nthDay = getNthDay(dateNextMonth, week, day)
-          pubDatesAfterToday.push([getDateWithPubTime(nthDay), week])
+          pubDatesAfterDate.push([getDateWithPubTime(nthDay), week])
         })
       })
     }
 
     // 公開日のうち、最も直近のものを取得する
-    const pubDate = pubDatesAfterToday.sort((a, b) => a[0].getTime() - b[0].getTime())[0]
+    const pubDate = pubDatesAfterDate.sort((a, b) => a[0].getTime() - b[0].getTime())[0]
     return [pubDate[0].getMonth(), pubDate[1], pubDate[0].getDay()]
   }
 
