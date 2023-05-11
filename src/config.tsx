@@ -7,7 +7,7 @@ export const days = ['日', '月', '火', '水', '木', '金', '土']
 
 // 公開週・曜日の設定
 export const pubWeeks = [2, 4]
-export const pubDays = [4]
+export const pubDays = [4, 5]
 
 // 公開時刻の設定
 export const pubHour = 18
