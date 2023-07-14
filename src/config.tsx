@@ -10,7 +10,7 @@ export const pubWeeks = [3, 4]
 export const pubDays = [0, 4]
 
 // 公開時刻の設定
-export const pubHour = 23
+export const pubHour = 20
 export const pubMinute = 0
 
 // お休み月の設定
