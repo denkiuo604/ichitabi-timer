@@ -198,12 +198,10 @@ const App = () => {
         <p>次回作公開まで、あと少し。</p>
       </div>
       <div>
-        <div className="description">
+        <a className="description" href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル">
           <p>志国一路さんのYouTubeチャンネル</p>
-          <a href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noreferrer" title="志国一路さんのYouTubeチャンネル">
-            <ImYoutube2 size="12vmin" />
-          </a>
-        </div>
+          <ImYoutube2 size="12vmin" />
+        </a>
         <p className="about">Ichitabi Timer</p>
         <div className="about">
           <a href="https://github.com/denkiuo604/ichitabi-timer" target="_blank" rel="noreferrer" title="GitHub repository of Ichitabi Timer">
