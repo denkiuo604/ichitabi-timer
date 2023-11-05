@@ -188,6 +188,7 @@ const App = () => {
         </div>
       </div>
       <div hidden={offMonths.includes(pubTime.getMonth() + 1) || tempSchedule}>
+        <p><strong>＞＞次回のイチ旅は活動1.5周年企画始動配信です＜＜</strong></p>
         <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHourOffset, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
         <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
       </div>
