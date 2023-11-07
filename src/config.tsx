@@ -10,8 +10,8 @@ export const pubWeeks = [2, 4]
 export const pubDays = [4]
 
 // 公開時刻の設定
-export const pubHour = 22
-export const pubMinute = 0
+export const pubHour = 19
+export const pubMinute = 30
 
 // お休み月の設定
 export const offMonths = [4, 8, 12]
