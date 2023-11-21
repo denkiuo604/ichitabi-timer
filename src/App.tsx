@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { ImGithub, ImTwitter, ImYoutube2 } from 'react-icons/im'
+import { ImGithub, ImYoutube2 } from 'react-icons/im'
+import { BsTwitterX } from 'react-icons/bs'
 import './App.css'
 import {
   days,
@@ -196,6 +197,10 @@ const App = () => {
       </div>
       <div hidden={!tempSchedule}>
         <p>次回作公開まで、あと少し。</p>
+        <a className="description" href="https://twitter.com/shikuni_ichiro/status/1726927419817505122" target="_blank" rel="noopener noreferrer" title="イチ旅の最新情報">
+          <p>イチ旅の最新情報</p>
+          <BsTwitterX size="5vmin" />
+        </a>
       </div>
       <div>
         <a className="description" href="https://www.youtube.com/c/ShikuniIchiro" target="_blank" rel="noopener noreferrer" title="志国一路さんのYouTubeチャンネル">
@@ -208,7 +213,7 @@ const App = () => {
             <ImGithub size="5vmin" />
           </a>
           <a href="https://twitter.com/intent/tweet?text=Ichitabi%20Timer&url=https%3A%2F%2Fdenkiuo604.github.io%2Fichitabi-timer" target="_blank" rel="noopener noreferrer" title="Tweet about Ichitabi Timer">
-            <ImTwitter size="5vmin" />
+            <BsTwitterX size="5vmin" />
           </a>
         </div>
       </div>
