@@ -197,7 +197,7 @@ const App = () => {
       </div>
       <div hidden={!tempSchedule}>
         <p>次回作公開まで、あと少し。</p>
-        <a className="description" href="https://twitter.com/shikuni_ichiro/status/1726927419817505122" target="_blank" rel="noopener noreferrer" title="イチ旅の最新情報">
+        <a className="description" href="https://twitter.com/shikuni_ichiro/status/1729812644406718563" target="_blank" rel="noopener noreferrer" title="イチ旅の最新情報">
           <p>イチ旅の最新情報</p>
           <BsTwitterX size="5vmin" />
         </a>
