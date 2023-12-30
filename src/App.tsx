@@ -18,12 +18,9 @@ const App = () => {
 
   // 公開日時設定用変数
   const pubHourOffset = pubHour - today.getTimezoneOffset() / 60 - 9 // UTC+9
-  const [pubMonth, initPubWeek, initPubDay] = getPubMonthWeekDay(today)
+  const [pubDate, initPubWeek] = getPubDateAndWeek(today)
   const [pubWeek, setPubWeek] = useState(initPubWeek)
-  const [pubDay, setPubDay] = useState(initPubDay)
-  const pubMonth1st = new Date()
-  pubMonth1st.setMonth(pubMonth, 1)
-  const pubDate = getNthDay(pubMonth1st, pubWeek, pubDay)
+  const [pubDay, setPubDay] = useState(pubDate.getDay())
   const [pubTime, setPubTime] = useState(getDateWithPubTime(pubDate))
 
   // カウントダウン用変数
@@ -40,12 +37,9 @@ const App = () => {
   const countdown = () => {
     const today = new Date()
     setToday(today)
-    const [pubMonth, pubWeek, pubDay] = getPubMonthWeekDay(today)
+    const [pubDate, pubWeek] = getPubDateAndWeek(today)
     setPubWeek(pubWeek)
-    setPubDay(pubDay)
-    const pubMonth1st = new Date()
-    pubMonth1st.setMonth(pubMonth, 1)
-    const pubDate = getNthDay(pubMonth1st, pubWeek, pubDay)
+    setPubDay(pubDate.getDay())
     setPubTime(getDateWithPubTime(pubDate))
 
     if (pubTime.getTime() - today.getTime() >= 0) {
@@ -115,12 +109,12 @@ const App = () => {
   }
 
   /**
-   * 入力された日付を基に、次回公開日の月と週と曜日を取得する関数
+   * 入力された日付を基に、次回公開日の日付と週を取得する関数
    *
    * @param date 日付
-   * @returns 月, 週, 曜日
+   * @returns 日付, 週
    */
-  function getPubMonthWeekDay (date: Date): [number, number, number] {
+  function getPubDateAndWeek (date: Date): [Date, number] {
     // 当月の公開日をすべて取得する
     // returnで必要なため、第何週かの情報も一緒に入れておく
     const pubDates: Array<[Date, number]> = []
@@ -148,7 +142,7 @@ const App = () => {
 
     // 公開日のうち、最も直近のものを取得する
     const pubDate = pubDatesAfterDate.sort((a, b) => a[0].getTime() - b[0].getTime())[0]
-    return [pubDate[0].getMonth(), pubDate[1], pubDate[0].getDay()]
+    return [pubDate[0], pubDate[1]]
   }
 
   /**
