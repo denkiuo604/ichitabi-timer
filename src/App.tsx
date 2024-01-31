@@ -13,6 +13,9 @@ import {
 } from './config'
 
 const App = () => {
+  // 公開日が取得できなかった場合に返される週の値
+  const WEEK_NOT_EXISTS = -1
+
   // 現在日時の取得
   const [today, setToday] = useState(new Date())
 
@@ -121,7 +124,10 @@ const App = () => {
     pubWeeks.forEach(week => {
       pubDays.forEach(day => {
         const nthDay = getNthDay(date, week, day)
-        pubDates.push([getDateWithPubTime(nthDay), week])
+        // 月によって第n d曜日が存在しない可能性もあるのでチェックする
+        if (nthDay != null) {
+          pubDates.push([getDateWithPubTime(nthDay), week])
+        }
       })
     })
 
@@ -135,9 +141,17 @@ const App = () => {
       pubWeeks.forEach(week => {
         pubDays.forEach(day => {
           const nthDay = getNthDay(dateNextMonth, week, day)
-          pubDatesAfterDate.push([getDateWithPubTime(nthDay), week])
+          // 月によって第n d曜日が存在しない可能性もあるのでチェックする
+          if (nthDay != null) {
+            pubDatesAfterDate.push([getDateWithPubTime(nthDay), week])
+          }
         })
       })
+    }
+
+    // 来月の公開日も存在しなかった場合は諦める
+    if (pubDatesAfterDate.length === 0) {
+      return [new Date(0), WEEK_NOT_EXISTS]
     }
 
     // 公開日のうち、最も直近のものを取得する
@@ -182,14 +196,14 @@ const App = () => {
           <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL7cOHyUohYjaVo7_3JdkOaPB57Y_GuTOJ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
       </div>
-      <div hidden={offMonths.includes(pubTime.getMonth() + 1) || tempSchedule}>
+      <div hidden={offMonths.includes(pubTime.getMonth() + 1) || tempSchedule || pubWeek === WEEK_NOT_EXISTS}>
         <p>次回作公開（{pubTime.getMonth() + 1}月第{pubWeek}{days[pubDay]}曜日{zeroPadding(pubHourOffset, 2)}:{zeroPadding(pubMinute, 2)}）まで</p>
         <p>あと{day}日{hour}時間{zeroPadding(minute, 2)}分{zeroPadding(second, 2)}秒</p>
       </div>
       <div hidden={!offMonths.includes(pubTime.getMonth() + 1) || tempSchedule}>
         <p>{pubTime.getMonth() + 1}月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
       </div>
-      <div hidden={!tempSchedule}>
+      <div hidden={!tempSchedule && pubWeek !== WEEK_NOT_EXISTS}>
         <p>次回作公開まで、あと少し。</p>
         <a className="description" href="https://twitter.com/shikuni_ichiro" target="_blank" rel="noopener noreferrer" title="志国一路さんのTwitter(現X)">
           <p>志国一路さんのTwitter(現X)</p>
