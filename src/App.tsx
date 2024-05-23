@@ -205,7 +205,7 @@ const App = () => {
       </div>
       <div hidden={!tempSchedule && pubWeek !== WEEK_NOT_EXISTS}>
         <p>次回作公開まで、あと少し。</p>
-        <a className="description" href="https://twitter.com/shikuni_ichiro" target="_blank" rel="noopener noreferrer" title="志国一路さんのTwitter(現X)">
+        <a className="description" href="https://x.com/shikuni_ichiro" target="_blank" rel="noopener noreferrer" title="志国一路さんのTwitter(現X)">
           <p>志国一路さんのTwitter(現X)</p>
           <BsTwitterX size="5vmin" />
         </a>
@@ -220,7 +220,7 @@ const App = () => {
           <a href="https://github.com/denkiuo604/ichitabi-timer" target="_blank" rel="noopener noreferrer" title="GitHub repository of Ichitabi Timer">
             <ImGithub size="5vmin" />
           </a>
-          <a href="https://twitter.com/intent/tweet?text=Ichitabi%20Timer&url=https%3A%2F%2Fdenkiuo604.github.io%2Fichitabi-timer" target="_blank" rel="noopener noreferrer" title="Tweet about Ichitabi Timer">
+          <a href="https://x.com/intent/post?text=Ichitabi%20Timer&url=https%3A%2F%2Fdenkiuo604.github.io%2Fichitabi-timer" target="_blank" rel="noopener noreferrer" title="Tweet about Ichitabi Timer">
             <BsTwitterX size="5vmin" />
           </a>
         </div>
