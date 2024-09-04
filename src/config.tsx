@@ -14,7 +14,7 @@ export const pubHour = 23
 export const pubMinute = 0
 
 // お休み月の設定
-export const offMonths = [4, 8, 12]
+export const offMonths = [4, 8, 9, 12]
 
 // 臨時のスケジュール変更有無
 export const tempSchedule = false
