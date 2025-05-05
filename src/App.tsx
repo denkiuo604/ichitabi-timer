@@ -204,7 +204,7 @@ const App = () => {
         <p>{pubTime.getMonth() + 1}月はお休みです。<br />これまでの「イチ旅！」や配信、アーカイブを楽しみましょう！</p>
       </div>
       <div hidden={!tempSchedule && pubWeek !== WEEK_NOT_EXISTS}>
-        <p>次回作公開まで、あと少し。</p>
+        <p>旅はつづく。</p>
         <a className="description" href="https://x.com/shikuni_ichiro" target="_blank" rel="noopener noreferrer" title="志国一路さんのTwitter(現X)">
           <p>志国一路さんのTwitter(現X)</p>
           <BsTwitterX size="5vmin" />
